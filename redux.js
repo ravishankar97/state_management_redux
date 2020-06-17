@@ -25,7 +25,7 @@ function createStore(reducer,initialState={}) {
         },
     }
 }
-
+//Counter Reducer
 const Counter = (action,state = {count :0})=>{
     switch(action.type){
         case "INCREMENT":
@@ -46,6 +46,7 @@ const Counter = (action,state = {count :0})=>{
 
 }
 
+//Happy Reducer
 const Happy = (action,state={happy:true})=>{
     switch(action.type){
     case 'PLAY':
@@ -63,6 +64,8 @@ const Happy = (action,state={happy:true})=>{
         return state;
     }
 }
+
+
 function combineReducers(reducers){
     return (action,state = {})=>{
         Object.keys(reducers).forEach(reducerKey =>{
@@ -74,6 +77,7 @@ function combineReducers(reducers){
 
 }
 
+//Combining both reducers
 const allReducers = combineReducers({
     Counter,Happy
 
@@ -81,7 +85,7 @@ const allReducers = combineReducers({
 
 const store = createStore(allReducers);
 
-// These can be replaced with functional components
+// This can be replaced with functional components
 store.subscribe(()=>{
     console.log("1. I am getting changed!",store.getState())
 })
